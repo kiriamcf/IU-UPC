@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import Slider from "../components/slider";
+import {FaInstagram, FaFacebook, FaTwitter} from "react-icons/fa"
 
 const Home: NextPage = () => {
   return (
@@ -30,7 +32,76 @@ const Home: NextPage = () => {
 
       <main>
         <Slider />
+        <div className="mt-7 flex flex-col justify-center items-center">
+          <h1 className="mb-5 text-xl font-bold">
+            RESTAURANT DE L’EPSEM
+          </h1>
+          <p className="max-w-[50%] text-center">
+            Ens encanta oferir als nostres clients una experiència culinària única i deliciosa. Amb una àmplia varietat d'opcions al nostre menú, des de plats tradicionals espanyols fins a opcions vegetarianes i sense gluten, estem segurs que trobaràs alguna cosa que t'agradi.
+          </p>
+        </div>
+        <div className="mt-7 mb-7 flex items-center justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+          </div>
+        </div>
       </main>
+
+      <footer className="bg-black py-10 flex justify-evenly">
+        <div>
+          <p className="mb-1 text-white text-sm font-bold">
+            CARTA
+          </p>
+          <ul>
+            <li>
+              <Link className="text-gray-500 text-xs hover:text-gray-300" href="/esmorzar">
+                ESMORZAR
+              </Link>
+            </li>
+            <li>
+              <Link className="text-gray-500 text-xs hover:text-gray-300" href="/dinar">
+                DINAR
+              </Link>
+            </li>
+            <li>
+              <Link className="text-gray-500 text-xs hover:text-gray-300" href="/begudes">
+                BEGUDES
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p className="mb-1 text-white text-sm font-bold">
+            TRUCA'NS
+          </p>
+          <address className="text-gray-300 text-sm">
+            <p>
+              (+34) 666 666 666
+            </p>
+          </address>
+        </div>
+        <div>
+          <p className="mb-1 text-white text-sm font-bold">
+            SEGUEIX-NOS
+          </p>
+          <address className="text-gray-500 flex justify-around">
+            <a className="hover:text-gray-300" href="#">
+              <FaFacebook />
+            </a>
+            <a className="hover:text-gray-300" href="#">
+              <FaInstagram />
+            </a>
+            <a className="hover:text-gray-300" href="#">
+              <FaTwitter />
+            </a>
+          </address>
+        </div>
+      </footer>
 
       {/* per si voleu mirar exemples de com va tailwind / imports de components, al codi de abaix n'hi ha */}
 
