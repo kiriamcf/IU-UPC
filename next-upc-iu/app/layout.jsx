@@ -3,8 +3,8 @@ import "tailwindcss/tailwind.css";
 import { Montserrat } from "next/font/google";
 
 export const metadata = {
-  title: 'Títol',
-  description: 'Descripció',
+  title: 'Restaurant de l’Epsem',
+  description: 'RESTAURANT DE L’EPSEM',
 }
 
 const montserrat = Montserrat({ subsets: ["latin"] });
