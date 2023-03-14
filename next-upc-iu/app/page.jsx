@@ -1,18 +1,13 @@
-import type { NextPage } from "next";
-import Link from "next/link";
-import Head from "next/head";
-import Image from "next/image";
-import Slider from "../components/slider";
-import {FaInstagram, FaFacebook, FaTwitter} from "react-icons/fa"
+import Image from 'next/image'
+import styles from './page.module.css'
+import Link from 'next/link'
+import Slider from './components/slider'
+import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa"
 
-const Home: NextPage = () => {
+
+export default function Home() {
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <header className="w-full py-4 px-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Image src="/logo.svg" alt="Webpage Logo" width={120} height={50} />
@@ -174,8 +169,7 @@ const Home: NextPage = () => {
           <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
         </a>
       </footer> */}
-    </>
-  );
-};
 
-export default Home;
+    </>
+  )
+}

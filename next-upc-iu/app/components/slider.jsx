@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled, RxDot, RxArrowRight, RxArrowLeft } from "react-icons/rx";
@@ -33,7 +35,7 @@ function Slider() {
     setCurrentIndex(newIndex);
   };
 
-  const goToSlide = (slideIndex: number) => {
+  const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
 
