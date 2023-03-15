@@ -11,6 +11,8 @@ module.exports = {
         'primary': '#BC8D4B',
         'primary-dark': '#996E2D',
         'primary-darker': '#76500E',
+        'custom-black': '#1A1915',
+        'custom-gray': '#818181',
       }
     },
   },

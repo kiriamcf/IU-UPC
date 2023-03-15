@@ -45,7 +45,7 @@ function Slider() {
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className="w-full h-full bg-center bg-cover duration-500"
       />
-      <div className="absolute bottom-0 left-[50%] -translate-x-[50%] flex justify-between px-4 items-center bg-white w-1/4 h-12">
+      <div className="absolute bottom-0 left-[50%] -translate-x-[50%] flex justify-between px-4 items-center bg-white w-[380px] h-12">
         <RxArrowLeft
           onClick={prevSlide}
           size={30}

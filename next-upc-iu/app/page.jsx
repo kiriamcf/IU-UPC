@@ -3,88 +3,94 @@ import styles from './page.module.css'
 import Link from 'next/link'
 import Slider from './components/slider'
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa"
-
+import { CiMenuBurger } from 'react-icons/ci';
 
 export default function Home() {
   return (
     <>
       <header className="w-full py-4 px-8 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Image src="/logo.svg" alt="Webpage Logo" width={120} height={50} />
-          <span className="uppercase text-xl transition-colors hover:text-primary">
+        <Image src="/logo.svg" alt="Webpage Logo" width={120} height={50} />
+        <nav className="w-full pl-4 flex items-center md:justify-between justify-end">
+          <Link href="#" className="hidden md:inline-block uppercase text-xl transition-colors hover:text-primary">
             Carta
-          </span>
-        </div>
-        <nav className="flex items-center gap-4">
-          <span className="uppercase text-xl transition-colors hover:text-primary">
-            Login
-          </span>
-          <span className="uppercase text-xl transition-colors hover:text-primary">
-            Register
-          </span>
+          </Link>
+          <ul className="hidden md:flex items-center gap-4">
+            <li className="uppercase text-xl transition-colors hover:text-primary">
+              <Link href="#">
+                Login
+              </Link>
+            </li>
+            <li className="uppercase text-xl transition-colors hover:text-primary">
+              <Link href="#">
+                Register
+              </Link>
+            </li>
+          </ul>
+          <CiMenuBurger size={30} className="md:hidden cursor-pointer hover:text-primary"/>
         </nav>
       </header>
 
       <main>
         <Slider />
-        <div className="mt-7 flex flex-col justify-center items-center">
-          <h1 className="mb-5 text-xl font-bold">
-            RESTAURANT DE L’EPSEM
+        <div className="pt-7 pb-10 gap-8 flex flex-col justify-center items-center">
+          <h1 className="uppercase text-xl font-bold leading-5">
+            restaurant de l'epsem
           </h1>
-          <p className="max-w-[50%] text-center">
+          <p className="max-w-xl text-center">
             Ens encanta oferir als nostres clients una experiència culinària única i deliciosa. Amb una àmplia varietat d'opcions al nostre menú, des de plats tradicionals espanyols fins a opcions vegetarianes i sense gluten, estem segurs que trobaràs alguna cosa que t'agradi.
           </p>
-        </div>
-        <div className="mt-7 mb-7 flex items-center justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+          <div className="flex items-center justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+            </div>
           </div>
         </div>
+        <iframe className="w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1488.6222323815655!2d1.827872609130784!3d41.7368196264712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a45806394f06e3%3A0xd61cd53aaa1aaf0d!2sRestaurante%20UPC%2C%20Manresa!5e0!3m2!1ses!2ses!4v1678902887030!5m2!1ses!2ses" height="500" style={{ border:0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </main>
 
-      <footer className="bg-black py-10 flex justify-evenly">
+      <footer className="bg-custom-black py-10 flex justify-evenly">
         <div>
-          <p className="mb-1 text-white text-sm font-bold">
-            CARTA
+          <p className="uppercase mb-1 text-white text-sm font-bold">
+            carta
           </p>
           <ul>
             <li>
-              <Link className="text-gray-500 text-xs hover:text-gray-300" href="/esmorzar">
-                ESMORZAR
+              <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
+                esmorzar
               </Link>
             </li>
             <li>
-              <Link className="text-gray-500 text-xs hover:text-gray-300" href="/dinar">
-                DINAR
+              <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
+                dinar
               </Link>
             </li>
             <li>
-              <Link className="text-gray-500 text-xs hover:text-gray-300" href="/begudes">
-                BEGUDES
+              <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
+                begudes
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="mb-1 text-white text-sm font-bold">
-            TRUCA'NS
+          <p className="uppercase mb-1 text-white text-sm font-bold">
+            truca'ns
           </p>
-          <address className="text-gray-300 text-sm">
+          <address className="text-white text-sm">
             <p>
               (+34) 666 666 666
             </p>
           </address>
         </div>
         <div>
-          <p className="mb-1 text-white text-sm font-bold">
-            SEGUEIX-NOS
+          <p className="uppercase mb-1 text-white text-sm font-bold">
+            segueix-nos
           </p>
-          <address className="text-gray-500 flex justify-around">
+          <address className="text-custom-gray flex gap-4">
             <a className="hover:text-gray-300" href="#">
               <FaFacebook />
             </a>
@@ -97,78 +103,6 @@ export default function Home() {
           </address>
         </div>
       </footer>
-
-      {/* per si voleu mirar exemples de com va tailwind / imports de components, al codi de abaix n'hi ha */}
-
-      {/* <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer> */}
 
     </>
   )
