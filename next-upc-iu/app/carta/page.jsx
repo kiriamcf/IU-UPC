@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import styles from './page.module.css'
 import Link from 'next/link'
-import Slider from './components/slider'
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa"
 import { CiMenuBurger } from 'react-icons/ci';
+import Card from '../components/card'
 
-export default function Home() {
+export default function CardPage() {
   return (
     <>
       <header className="w-full py-4 px-8 flex items-center justify-between">
@@ -31,26 +30,20 @@ export default function Home() {
       </header>
 
       <main>
-        <Slider />
-        <div className="pt-7 pb-10 gap-8 flex flex-col justify-center items-center">
-          <h1 className="uppercase text-xl font-bold leading-5">
-            restaurant de l'epsem
-          </h1>
-          <p className="max-w-xl text-center">
-            Ens encanta oferir als nostres clients una experiència culinària única i deliciosa. Amb una àmplia varietat d'opcions al nostre menú, des de plats tradicionals espanyols fins a opcions vegetarianes i sense gluten, estem segurs que trobaràs alguna cosa que t'agradi.
-          </p>
-          <div className="flex items-center justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            </div>
-          </div>
+        <div className="pt-7 pb-10 gap-8 flex flex-wrap justify-center items-center">
+          <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple2" preu="2.50" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple3" preu="1.50" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple4" preu="2.50" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple5" preu="1.50" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple6" preu="2.00" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple7" preu="3.00" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple8" preu="3.10" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple9" preu="2.50" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple10" preu="2.30" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple11" preu="3.30" descripcio="Això és un text" />
+          <Card imatge="/example.jpg" nom="Exemple12" preu="1.00" descripcio="Això és un text" />
         </div>
-        <iframe className="w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1488.6222323815655!2d1.827872609130784!3d41.7368196264712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a45806394f06e3%3A0xd61cd53aaa1aaf0d!2sRestaurante%20UPC%2C%20Manresa!5e0!3m2!1ses!2ses!4v1678902887030!5m2!1ses!2ses" height="500" style={{ border:0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </main>
 
       <footer className="bg-custom-black py-10 flex justify-evenly">
@@ -103,7 +96,6 @@ export default function Home() {
           </address>
         </div>
       </footer>
-
     </>
   )
 }
