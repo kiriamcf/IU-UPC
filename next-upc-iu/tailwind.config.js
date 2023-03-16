@@ -17,6 +17,9 @@ module.exports = {
       },
       height: {
         'almost': 'calc(100vh - 176px - 2rem - 70px)',
+      },
+      boxShadow: {
+        'custom-button': 'inset 0 0 0 3px #1A1915'
       }
     },
   },
