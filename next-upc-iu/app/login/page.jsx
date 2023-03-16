@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Slider from './components/slider'
+import Slider from '../components/slider'
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa"
 import { CiMenuBurger } from 'react-icons/ci';
 
@@ -30,29 +30,33 @@ export default function Home() {
       </header>
 
       <main>
-        <Slider />
-        <div className="pt-7 pb-10 gap-8 flex flex-col justify-center items-center">
-          <h1 className="uppercase text-xl font-bold leading-5">
-            restaurant de l'epsem
-          </h1>
-          <p className="max-w-xl text-center">
-            Ens encanta oferir als nostres clients una experiència culinària única i deliciosa. Amb una àmplia varietat d'opcions al nostre menú, des de plats tradicionals espanyols fins a opcions vegetarianes i sense gluten, estem segurs que trobaràs alguna cosa que t'agradi.
-          </p>
-          <div className="flex items-center justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-            </div>
-          </div>
+        <div className="w-full h-almost max-w-xs mx-auto">
+            <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-6 mt-8">
+                <div className="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                        Email
+                    </label>
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="exemple@email.com" />
+                </div>
+                <div className="mb-6">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+                        Contrasenya
+                    </label>
+                    <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
+                    <p className="text-red-500 text-xs italic">Please choose a password.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                    <button className="bg-primary-fill hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        Login
+                    </button>
+                    <a className="inline-block align-baseline font-bold text-sm text-primary-fill hover:text-primary" href="#">
+                        Forgot Password?
+                    </a>
+                </div>
+            </form>
         </div>
-        <iframe className="w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1488.6222323815655!2d1.827872609130784!3d41.7368196264712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a45806394f06e3%3A0xd61cd53aaa1aaf0d!2sRestaurante%20UPC%2C%20Manresa!5e0!3m2!1ses!2ses!4v1678902887030!5m2!1ses!2ses" height="500" style={{ border:0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </main>
-
-      <footer className="bg-custom-black py-10 flex justify-evenly">
+    </main>
+    <footer className="bg-custom-black py-10 flex justify-evenly">
         <div>
           <p className="uppercase mb-1 text-white text-sm font-bold">
             carta
@@ -102,7 +106,6 @@ export default function Home() {
           </address>
         </div>
       </footer>
-
     </>
   )
 }
