@@ -15,11 +15,11 @@ module.exports = {
         'custom-black': '#1A1915',
         'custom-gray': '#818181',
       },
-      height: {
-        'almost': 'calc(100vh - 176px - 2rem - 70px)',
+      minHeight: {
+        'almostScreen': 'calc(100vh - 67px)',
       },
       boxShadow: {
-        'custom-button': 'inset 0 0 0 3px #1A1915'
+        'xl-full': '0 0px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -4px rgb(0 0 0 / 0.1);'
       }
     },
   },
