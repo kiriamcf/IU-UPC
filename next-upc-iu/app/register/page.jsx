@@ -63,11 +63,8 @@ export default function Home() {
                 }
               </div>
               <button onClick={setTriedLogin} className="bg-primary-fill w-full hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                  Login
+                  Register
               </button>
-              <a className="inline-block align-baseline font-bold text-sm text-primary-fill hover:text-primary" href="#">
-                  Has oblidat la contrasenya?
-              </a>
           </form>
           <section className="flex gap-4 w-full mb-6">
             <div class="rounded p-4 w-1/2 flex justify-center bg-white shadow-xl-full hover:bg-gray-100 transition-colors cursor-pointer">
