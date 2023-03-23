@@ -29,20 +29,67 @@ export default function CardPage() {
         </nav>
       </header>
 
-      <main>
-        <div className="pt-7 pb-10 gap-8 flex flex-wrap justify-center items-center">
-          <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple2" preu="2.50" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple3" preu="1.50" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple4" preu="2.50" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple5" preu="1.50" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple6" preu="2.00" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple7" preu="3.00" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple8" preu="3.10" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple9" preu="2.50" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple10" preu="2.30" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple11" preu="3.30" descripcio="Això és un text" />
-          <Card imatge="/example.jpg" nom="Exemple12" preu="1.00" descripcio="Això és un text" />
+      <main className='pt-7 pb-10 px-5'>
+        <div>
+          categorias y buscador
+        </div>
+        <div className='grid grid-cols-12 gap-4'>
+          <div className='col-span-2'>
+            <div className='px-4 py-3 shadow-md'>
+              <h1 className='text-slate-500 text-sm uppercase'>
+                Filtrar productes
+              </h1>
+              <div className='divide-y text-xs font-medium'>
+                <div className='grid gap-2 py-2 uppercase'>
+                  <h2>Preu</h2>
+                  <input type="range" className="" min="0" max="1000" step="10"/>
+                  <span>xd</span>
+                </div>
+                <div className='grid gap-2 py-2 uppercase'>
+                  <h2>Categoria</h2>
+                  <ul className='grid gap-2'>
+                    <li className='flex gap-1 hover:cursor-pointer'>
+                      <input type="checkbox" className="appearance-none h-2 w-2 bg-gray-200 rounded-full checked:bg-primary" id="01" name="01" value="01"/>
+                      <label for="01">01</label>
+                    </li>
+                    
+                  </ul>
+                </div>
+                <div className='grid gap-2 py-2 uppercase'>
+                  <h2>Al·lergògens</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul className='grid gap-4 col-span-10 grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4'>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+            <li>
+              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+            </li>
+          </ul>
         </div>
       </main>
 

@@ -20,6 +20,9 @@ module.exports = {
       },
       boxShadow: {
         'custom-button': 'inset 0 0 0 3px #1A1915'
+      },
+      screens: {
+        'xs': '480px'
       }
     },
   },
