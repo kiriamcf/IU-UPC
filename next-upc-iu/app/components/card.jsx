@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import { IoIosArrowForward } from 'react-icons/io'
+import { FaInfoCircle } from 'react-icons/fa'
+import Button from '../components/button'
 
 function Card({imatge, nom, preu, descripcio}) {
   return (
-    <article className='bg-gray-100 rounded-md border-2 border-solid border-gray shadow-md'>
-      <div className='rounded-t-md overflow-hidden'>
-        <Image className='rounded-t-md hover:scale-125' src={imatge} alt="Exemple carta" width={320} height={300}/>
+    <article className='bg-stone-50 rounded-md shadow-md'>
+      <div className='relative rounded-t-md overflow-hidden'>
+        <Image className='duration-500 transition-transform hover:scale-125' src={imatge} alt="Exemple carta" width={800} height={600}/>
+        <FaInfoCircle size={20} className='absolute top-1.5 right-1.5 text-stone-50'/>
       </div>
       <div className='p-4 flex flex-col gap-1'>
         <div className='flex justify-between'>
@@ -16,15 +18,10 @@ function Card({imatge, nom, preu, descripcio}) {
             {preu}€
           </p>
         </div>
-        <p>
+        <p className="mb-4">
           {descripcio}
         </p>
-        <div className='flex justify-center'>
-          <button className='group flex justify-center items-center border-2 border-solid border-primary rounded-lg p-2 hover:bg-primary'>
-            <span className='text-primary font-medium group-hover:text-gray-100'>Afegir</span>
-            <IoIosArrowForward className='text-primary group-hover:text-gray-100 group-hover:translate-x-1.5' />
-          </button>
-        </div>
+        <Button text="Afegir" />
       </div>
     </article>
   );

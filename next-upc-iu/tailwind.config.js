@@ -19,7 +19,10 @@ module.exports = {
         'almostScreen': 'calc(100vh - 67px)',
       },
       boxShadow: {
-        'xl-full': '0 0px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -4px rgb(0 0 0 / 0.1);'
+        'xl-full': '0 0px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -4px rgb(0 0 0 / 0.1)'
+      },
+      screens: {
+        'xs': '480px'
       }
     },
   },
