@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState } from "react";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import Button from "./button";
 import { RxDotFilled, RxDot, RxArrowRight, RxArrowLeft } from "react-icons/rx";
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 function Slider() {
   const slides = [
     {
-      url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80",
+      // url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80",
+      url: "landing.png"
     },
     {
       url: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
@@ -40,11 +40,17 @@ function Slider() {
   };
 
   return (
-    <div className="h-[500px] w-full m-auto relative group"> {/*max-w-screen-2xl*/}
+    <div className="h-[400px] sm:h-[500px] w-full m-auto relative group"> {/*max-w-screen-2xl*/}
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className="w-full h-full bg-center bg-cover duration-500"
       />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-10">
+        <h1 className="uppercase font-bold text-white text-5xl sm:text-7xl">Benvingut</h1>
+        <div className="w-[80%]">
+          <Button text="Reserva" white={true} />
+        </div>
+      </div>
       <div className="absolute bottom-0 left-[50%] -translate-x-[50%] flex justify-between px-4 items-center bg-white w-[380px] h-12">
         <RxArrowLeft
           onClick={prevSlide}

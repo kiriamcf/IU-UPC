@@ -19,6 +19,8 @@ module.exports = {
         'almostScreen': 'calc(100vh - 67px)',
       },
       boxShadow: {
+        'custom-button': 'inset 0 0 0 3px #1A1915',
+        'custom-button-white': 'inset 0 0 0 3px #fff',
         'xl-full': '0 0px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -4px rgb(0 0 0 / 0.1)'
       },
       screens: {

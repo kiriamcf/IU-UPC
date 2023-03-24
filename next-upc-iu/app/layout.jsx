@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={montserrat.className}>
         <header className="w-full py-4 px-8 flex items-center justify-between">
-          <nav className="w-full pl-4 flex items-center md:justify-between justify-end">
+          <nav className="w-full flex items-center justify-between">
             <div className="flex gap-4 items-center">
-              <Link href="/" className="hidden md:inline-block uppercase text-xl transition-colors hover:text-primary">
+              <Link href="/">
                 <Image src="/logo.svg" alt="Webpage Logo" width={120} height={50} />
               </Link>
               <Link href="/carta" className="hidden md:inline-block uppercase text-xl transition-colors hover:text-primary">
