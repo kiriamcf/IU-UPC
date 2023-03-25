@@ -4,6 +4,15 @@ import Footer from './components/footer'
 import Slider from './components/slider'
 
 export default function Home() {
+  const landing_images = [
+    {url: "/landing_1.jpg", alt: "Arròs i gambes"},
+    {url: "/landing_2.jpg", alt: "Carn i verdures"},
+    {url: "/landing_3.jpg", alt: "Carn estil japonès"},
+    {url: "/landing_4.jpg", alt: "Sopa de verdures"},
+    {url: "/landing_5.jpg", alt: "Arròs amb carn"},
+    {url: "/landing_6.jpg", alt: "Carn amb verdures"},
+  ];
+
   return (
     <>
       <main>
@@ -17,12 +26,9 @@ export default function Home() {
           </p>
           <div className="flex items-center justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
-              <Image src="/example.jpg" alt="Imatge exemple" width={300} height={300} />
+              {landing_images.map(imatge => (
+                <Image src={imatge.url} alt={imatge.alt} width={300} height={300} className="h-[250px] object-cover rounded" />
+              ))}
             </div>
           </div>
         </div>
