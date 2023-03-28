@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="min-h-almostScreen w-full max-w-sm mx-auto">
+      <main className="min-h-almostScreen w-full max-w-sm mx-auto pt-8">
         <form className="bg-white shadow-xl-full rounded p-8 mb-6 mt-8 flex flex-col gap-4">
             <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
