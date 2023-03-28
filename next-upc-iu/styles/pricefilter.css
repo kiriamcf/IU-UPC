@@ -1,0 +1,28 @@
+.input-range__slider,
+.input-range__track,
+.input-range__slider-container {
+  transition: none !important;
+}
+
+.input-range__slider {
+    border-radius: 0;
+    background-color: white;
+    border-color: rgb(162, 162, 162);
+    transition-property: background-color !important;
+    transition-duration: 300ms !important;
+}
+
+.input-range__track--active {
+    background-color: #BC8D4B;
+}
+
+.input-range__label-container {
+    display: none;
+}
+
+.input-range__slider:hover {
+    background-color: #333 !important;
+}
+
+
+
