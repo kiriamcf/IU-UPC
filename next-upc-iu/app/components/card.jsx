@@ -6,7 +6,7 @@ function Card({imatge, nom, preu, descripcio}) {
   return (
     <article className='bg-stone-50 rounded-md shadow-md'>
       <div className='relative rounded-t-md overflow-hidden'>
-        <Image className='duration-500 transition-transform hover:scale-125' src={imatge} alt="Exemple carta" width={800} height={600}/>
+        <Image className='duration-500 transition-transform hover:scale-125' src={imatge} alt="Exemple carta" width={500} height={500}/>
         <FaInfoCircle size={20} className='absolute top-1.5 right-1.5 text-stone-50'/>
       </div>
       <div className='p-4 flex flex-col gap-1'>

@@ -2,7 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa"
 import { CiMenuBurger } from 'react-icons/ci';
+import {BsSearch} from 'react-icons/bs'
+import {IoFilter} from 'react-icons/io5'
 import Card from '../components/card'
+import Search from '../components/search'
+import PriceFilter from '../components/pricefilter';
 
 export default function CardPage() {
   return (
@@ -30,66 +34,130 @@ export default function CardPage() {
       </header>
 
       <main className='pt-7 pb-10 px-5'>
-        <div>
-          categorias y buscador
+        {/* CATEGORIES I BUSCADOR */}
+        <div style={{backgroundColor: '#333'}} className='mb-7 p-4 flex justify-between items-center rounded'>
+          <div className='md:hidden'>
+            <IoFilter size={20} className='text-custom-gray2 cursor-pointer hover:text-hover-gray transition' />
+          </div>
+          <div className='flex gap-10 text-custom-gray2'>
+            <Link href="/carta" className='uppercase text-sm hover:text-hover-gray transition'>
+              Esmorzar
+            </Link>
+            <Link href="/carta" className='uppercase text-sm hover:text-hover-gray transition'>
+              Dinar
+            </Link>
+            <Link href="/carta" className='uppercase text-sm hover:text-hover-gray transition'>
+              Begudes
+            </Link>
+          </div>
+          <div className='hidden md:block'>
+            <Search placeholder='Producte' />
+          </div>
+          <div className='md:hidden'>
+            <BsSearch className='text-custom-gray2 cursor-pointer hover:text-hover-gray transition' />
+          </div>
         </div>
-        <div className='grid grid-cols-12 gap-4'>
-          <div className='col-span-2'>
-            <div className='px-4 py-3 shadow-md'>
-              <h1 className='text-slate-500 text-sm uppercase'>
-                Filtrar productes
+
+        
+        <div className='flex gap-4'>
+          {/* FILTRES */}
+          <div className='hidden md:block w-64'>
+            <div className='flex gap-4 justify-between pb-2'>
+              <h1 className='text-black text-sm font-semibold uppercase'>
+                Filtres
               </h1>
-              <div className='divide-y text-xs font-medium'>
-                <div className='grid gap-2 py-2 uppercase'>
-                  <h2>Preu</h2>
-                  <input type="range" className="" min="0" max="1000" step="10"/>
-                  <span>xd</span>
+              <button className='py-0 px-0 text-primary text-xs object-contain hover:text-primary-hover transition'>
+                Restablir filtres
+              </button>
+            </div>
+            <div className='divide-y text-xs'>
+              <div className='py-2'>
+                <h2 className='font-medium uppercase'>Preu</h2>
+                <div className='py-2'>
+                  <PriceFilter maxValue={15} minValue={0} step={0.05} />
                 </div>
-                <div className='grid gap-2 py-2 uppercase'>
-                  <h2>Categoria</h2>
-                  <ul className='grid gap-2'>
-                    <li className='flex gap-1 hover:cursor-pointer'>
-                      <input type="checkbox" className="appearance-none h-2 w-2 bg-gray-200 rounded-full checked:bg-primary" id="01" name="01" value="01"/>
-                      <label for="01">01</label>
-                    </li>
-                    
-                  </ul>
-                </div>
-                <div className='grid gap-2 py-2 uppercase'>
-                  <h2>Al·lergògens</h2>
-                </div>
+              </div>
+              <div className='py-2'>
+                <h2 className='font-medium uppercase'>Categoria</h2>
+                <ul className='grid gap-2 py-2'>
+                  <li className='flex gap-1 items-center'>
+                    <input type="checkbox" className="appearance-none h-2 w-2 bg-gray-200 rounded-full hover:bg-primary transition duration-300 hover:cursor-pointer checked:bg-primary" id="01" name="01" value="01"/>
+                    <label htmlFor="01" className='flex gap-1 items-center hover:cursor-pointer'>
+                      <span>
+                        Vegetarià
+                      </span>
+                      <Image src="/vege.svg" alt="Logo vegetable" width={14} height={14} />
+                    </label>
+                  </li>
+                  <li className='flex gap-1 items-center'>
+                    <input type="checkbox" className="appearance-none h-2 w-2 bg-gray-200 rounded-full hover:bg-primary transition duration-300 hover:cursor-pointer checked:bg-primary" id="02" name="02" value="02"/>
+                    <label htmlFor="02" className='flex gap-1 items-center hover:cursor-pointer'>
+                      <span>
+                        Vegà
+                      </span>
+                      <Image src="/vege.svg" alt="Logo vegetable" width={14} height={14} />
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div className='py-2'>
+                <h2 className='font-medium uppercase'>Al·lergògens</h2>
+                <ul className='grid gap-2 py-2'>
+                  <li className='flex gap-1 items-center'>
+                    <input type="checkbox" className="appearance-none h-2 w-2 bg-gray-200 rounded-full hover:bg-primary transition duration-300 hover:cursor-pointer checked:bg-primary" id="03" name="03" value="03"/>
+                    <label htmlFor="03" className='flex gap-1 items-center hover:cursor-pointer'>
+                      <span>
+                        Sense gluten
+                      </span>
+                      <Image src="/gluten.svg" alt="Logo sense gluten" width={14} height={14} />
+                    </label>
+                  </li>
+                  <li className='flex gap-1 items-center'>
+                    <input type="checkbox" className="appearance-none h-2 w-2 bg-gray-200 rounded-full hover:bg-primary transition duration-300 hover:cursor-pointer checked:bg-primary" id="04" name="04" value="04"/>
+                    <label htmlFor="04" className='flex gap-1 items-center hover:cursor-pointer'>
+                      <span>
+                        Sense lactosa
+                      </span>
+                      <Image className='h-4' src="/lactose.svg" alt="Logo sense lactosa" width={14} height={14} />
+                    </label>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-          <ul className='grid gap-4 col-span-10 grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4'>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-            <li>
-              <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-            </li>
-          </ul>
+          
+          {/* GRID PRODUCTES */}
+          <div className='flex-1'>
+            <ul className='grid gap-4 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+              <li>
+                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
+              </li>
+            </ul>
+          </div>
         </div>
       </main>
 

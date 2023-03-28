@@ -14,6 +14,10 @@ module.exports = {
         'primary-darker': '#76500E',
         'custom-black': '#1A1915',
         'custom-gray': '#818181',
+        'primary-hover': '#D6A96B',
+        'filter-color': '#A06F2C',
+        'custom-gray2': '#BABABA',
+        'hover-gray': '#F0F0F0',
       },
       minHeight: {
         'almostScreen': 'calc(100vh - 67px)',
