@@ -1,31 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
-import '../../styles/pricefilter.css';
+import * as React from 'react';
+import Slider from '@mui/material/Slider';
 
-function PriceFilter({maxValue, minValue, step}) {
-  const [value, setValue] = useState({ min: minValue, max: maxValue });
+function PriceFilter({value, setValue}) {
 
-  const handleChange = (newValue) => { 
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
     <div className='flex flex-col gap-2 justify-center items-center'>
-      <div className='w-48'>
-      <InputRange
-        maxValue={maxValue}
-        minValue={minValue}
+      <Slider
+        className="w-[90%]"
+        min={0}
+        max={25}
         value={value}
-        step={step}
         onChange={handleChange}
+        sx={{
+          color: '#BC8D4B',
+          '& .MuiSlider-track': {
+            border: 'none',
+          },   
+          '& .MuiSlider-thumb': {
+            backgroundColor: '#fff',
+            border: '1px solid currentColor',
+            '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+              boxShadow: 'inherit',
+            },
+            '&:before': {
+              display: 'none',
+            },
+          },
+        }}
       />
-      </div>
-      
       <div>
-        Des de {value.min.toFixed(2)}€ a {value.max.toFixed(2)}€
+        Des de {value[0]}€ a {value[1]}€
       </div>
     </div>
   );

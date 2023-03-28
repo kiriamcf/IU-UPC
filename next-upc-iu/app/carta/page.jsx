@@ -1,41 +1,86 @@
+'use client';
+
+import Footer from '../components/footer';
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa"
-import { CiMenuBurger } from 'react-icons/ci';
 import {BsSearch} from 'react-icons/bs'
 import {IoFilter} from 'react-icons/io5'
 import Card from '../components/card'
 import Search from '../components/search'
 import PriceFilter from '../components/pricefilter';
+import { useState, useMemo } from 'react';
 
 export default function CardPage() {
+
+  const [valueSlider, setValueSlider] = useState([0, 15]);
+
+  const carta = useMemo(() => [
+    {
+      id: 1,
+      image: "/example.jpg",
+      name: "Test 1",
+      price: 3.50,
+      description: "asdsad"
+    },
+    {
+      id: 2,
+      image: "/example.jpg",
+      name: "Test 2",
+      price: 3,
+      description: "asdasddsadas"
+    },
+    {
+      id: 3,
+      image: "/example.jpg",
+      name: "Test 3",
+      price: 5,
+      description: "asdsaasdasasdd"
+    },
+    {
+      id: 4,
+      image: "/example.jpg",
+      name: "Test 4",
+      price: 2,
+      description: "aad"
+    },
+    {
+      id: 5,
+      image: "/example.jpg",
+      name: "Test 1",
+      price: 3.50,
+      description: "asdsad"
+    },
+    {
+      id: 6,
+      image: "/example.jpg",
+      name: "Test 6",
+      price: 6,
+      description: "sd"
+    },
+    {
+      id: 7,
+      image: "/example.jpg",
+      name: "Test 7",
+      price: 5,
+      description: "asdsaasdasasdd"
+    },
+    {
+      id: 8,
+      image: "/example.jpg",
+      name: "Test 8",
+      price: 10,
+      description: "aad"
+    },
+  ], []);
+
+  const filteredCarta = useMemo(() => carta.filter((e) => e.price >= valueSlider[0] && e.price <= valueSlider[1]) , [carta, valueSlider]);
+
   return (
     <>
-      <header className="w-full py-4 px-8 flex items-center justify-between">
-        <Image src="/logo.svg" alt="Webpage Logo" width={120} height={50} />
-        <nav className="w-full pl-4 flex items-center md:justify-between justify-end">
-          <Link href="/carta" className="hidden md:inline-block uppercase text-xl transition-colors hover:text-primary">
-            Carta
-          </Link>
-          <ul className="hidden md:flex items-center gap-4">
-            <li className="uppercase text-xl transition-colors hover:text-primary">
-              <Link href="#">
-                Login
-              </Link>
-            </li>
-            <li className="uppercase text-xl transition-colors hover:text-primary">
-              <Link href="#">
-                Register
-              </Link>
-            </li>
-          </ul>
-          <CiMenuBurger size={30} className="md:hidden cursor-pointer hover:text-primary"/>
-        </nav>
-      </header>
-
-      <main className='pt-7 pb-10 px-5'>
+    <div className="min-h-almostScreen">
+      <main className='pb-10 px-5'>
         {/* CATEGORIES I BUSCADOR */}
-        <div style={{backgroundColor: '#333'}} className='mb-7 p-4 flex justify-between items-center rounded'>
+        <div style={{backgroundColor: '#333'}} className='-mx-5 mb-7 p-4 flex justify-between items-center'>
           <div className='md:hidden'>
             <IoFilter size={20} className='text-custom-gray2 cursor-pointer hover:text-hover-gray transition' />
           </div>
@@ -57,9 +102,8 @@ export default function CardPage() {
             <BsSearch className='text-custom-gray2 cursor-pointer hover:text-hover-gray transition' />
           </div>
         </div>
-
         
-        <div className='flex gap-4'>
+        <div className='flex gap-8'>
           {/* FILTRES */}
           <div className='hidden md:block w-64'>
             <div className='flex gap-4 justify-between pb-2'>
@@ -74,7 +118,7 @@ export default function CardPage() {
               <div className='py-2'>
                 <h2 className='font-medium uppercase'>Preu</h2>
                 <div className='py-2'>
-                  <PriceFilter maxValue={15} minValue={0} step={0.05} />
+                  <PriceFilter value={valueSlider} setValue={setValueSlider} />
                 </div>
               </div>
               <div className='py-2'>
@@ -129,88 +173,15 @@ export default function CardPage() {
           {/* GRID PRODUCTES */}
           <div className='flex-1'>
             <ul className='grid gap-4 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
-              <li>
-                <Card imatge="/example.jpg" nom="Exemple" preu="3.50" descripcio="Això és un text" />
-              </li>
+              {filteredCarta.map(e => {
+                return <li><Card image={e.image} name={e.name} price={e.price} description={e.description} /></li>
+              })}
             </ul>
           </div>
         </div>
       </main>
-
-      <footer className="bg-custom-black py-10 flex justify-evenly">
-        <div>
-          <p className="uppercase mb-1 text-white text-sm font-bold">
-            carta
-          </p>
-          <ul>
-            <li>
-              <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
-                esmorzar
-              </Link>
-            </li>
-            <li>
-              <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
-                dinar
-              </Link>
-            </li>
-            <li>
-              <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
-                begudes
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p className="uppercase mb-1 text-white text-sm font-bold">
-            truca'ns
-          </p>
-          <address className="text-white text-sm">
-            <p>
-              (+34) 666 666 666
-            </p>
-          </address>
-        </div>
-        <div>
-          <p className="uppercase mb-1 text-white text-sm font-bold">
-            segueix-nos
-          </p>
-          <address className="text-custom-gray flex gap-4">
-            <a className="hover:text-gray-300" href="#">
-              <FaFacebook />
-            </a>
-            <a className="hover:text-gray-300" href="#">
-              <FaInstagram />
-            </a>
-            <a className="hover:text-gray-300" href="#">
-              <FaTwitter />
-            </a>
-          </address>
-        </div>
-      </footer>
+      <Footer />
+    </div>
     </>
   )
 }

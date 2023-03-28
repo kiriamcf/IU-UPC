@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <header className="w-full py-4 px-8 flex items-center justify-between">
+        <header className="w-full h-[67px] py-4 px-8 flex items-center justify-between">
           <nav className="w-full flex items-center justify-between">
             <div className="flex gap-4 items-center">
               <Link href="/">

@@ -20,7 +20,7 @@ module.exports = {
         'hover-gray': '#F0F0F0',
       },
       minHeight: {
-        'almostScreen': 'calc(100vh - 67px)',
+        'almostScreen': 'calc(100vh - 67px - 176px)',
       },
       boxShadow: {
         'custom-button': 'inset 0 0 0 3px #1A1915',
