@@ -44,7 +44,7 @@ export default function CardPage() {
                 image: "/example.jpg",
                 name: "Test 2",
                 price: 3,
-                description: "asdasddsadas",
+                description: "asdasddsadasasdasddsa",
                 category: {
                     vegan: true,
                     vegetarian: false,

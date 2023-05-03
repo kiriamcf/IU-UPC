@@ -5,17 +5,22 @@ import Link from 'next/link'
 import Footer from '../components/footer';
 import { FcGoogle } from 'react-icons/fc';
 import { useState } from 'react';
+import { signIn } from 'next-auth/react'
 
 export default function Home() {
 
   const [triedLogin, setTriedLogin] = useState(false)
+
+  const handleSignIn = () => {
+    signIn('google');
+  }
 
   return (
     <>
       <main className="min-h-almostScreen w-full max-w-sm mx-auto pt-8">
         <form className="bg-white shadow-xl-full rounded p-8 mb-6 flex flex-col gap-4">
             <div>
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                <label className="block text-gray-700 text-sm font-bold mb-2" HtmlFor="email">
                     Email
                 </label>
                 <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${triedLogin ? "border-red-500" : ""}`} id="email" type="email" placeholder="exemple@email.com" />
@@ -25,7 +30,7 @@ export default function Home() {
                 }
             </div>
             <div>
-                <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+                <label className="block text-gray-700 text-sm font-bold mb-2" HtmlFor="password">
                     Contrasenya
                 </label>
                 <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${triedLogin ? "border-red-500" : ""}`} id="password" type="email" placeholder="******************" />
@@ -43,7 +48,7 @@ export default function Home() {
         </form>
         <section className="flex gap-4 w-full">
           <div className="rounded p-4 w-1/2 flex justify-center bg-white shadow-xl-full hover:bg-gray-100 transition-colors cursor-pointer">
-            <a href="#">
+            <a href="#" onClick={handleSignIn}>
               <FcGoogle size="40" />
             </a>
           </div>
