@@ -1,17 +1,17 @@
+import dbConnect from "../config/dbConnect"
 import User from "../models/user"
+import { ObjectId } from "mongodb"
 
-export async function indexUser(req, res, next) {
+dbConnect()
+
+export async function indexUser() {
   const users = await User.find()
-  res.status(200).json({
-    users
-  })
+  return users
 }
 
-export async function showUser(req, res, next) {
-  // const userId = req.params.userId
-  res.status(200).json({
-    hola: "mon"
-  })
+export async function showUser(id) {
+  const user = await User.findOne(id)
+  return user
 }
 
 export async function createUser(req, res, next) {
