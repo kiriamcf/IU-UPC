@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { CiMenuBurger } from 'react-icons/ci';
+import {FaShoppingCart} from 'react-icons/fa'
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import LoginDropdown from './logindropdown';
@@ -20,7 +21,12 @@ export default async function Header() {
           </Link>
         </div>
         {session ? (
-          <LoginDropdown name={session.user.name} imageUrl={session.user.image} />
+          <div className='flex gap-4 items-center'>
+            <Link href='/carret'>
+              <FaShoppingCart size={24} className='hover:text-primary' />
+            </Link>
+            <LoginDropdown name={session.user.name} imageUrl={session.user.image} />
+          </div>
         ) : (
         <ul className="hidden md:flex items-center gap-4">
           <li className="uppercase text-xl transition-colors hover:text-primary">

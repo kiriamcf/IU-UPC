@@ -9,6 +9,8 @@ export async function GET(Request) {
 }
 
 export async function POST(Request) {
-  const { searchParams } = new URL(request.url);
-  return NextResponse.json({ product })
+  const user = await createUser(Request)
+  return NextResponse.json(user, {
+    status: 200,
+  })
 }

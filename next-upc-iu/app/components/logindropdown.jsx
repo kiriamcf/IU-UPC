@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {MdOutlineArrowDropDown} from 'react-icons/md'
 import { useState } from 'react';
+import { signOut } from 'next-auth/react'
 
 export default function LoginDropdown({name, imageUrl}) {
 
@@ -11,6 +12,10 @@ export default function LoginDropdown({name, imageUrl}) {
 
   const handleDropdown = () => {
     setDropdown(!stateDropdown);
+  }
+
+  const handleLogOut = () => {
+    signOut('google');
   }
 
   return (
@@ -33,9 +38,9 @@ export default function LoginDropdown({name, imageUrl}) {
             </Link>
           </li>
           <li className='pb-1 hover:underline'>
-            <Link href='#'>
+            <a href='#' onClick={handleLogOut}>
               Tancar sessió
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

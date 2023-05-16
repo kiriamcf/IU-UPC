@@ -17,6 +17,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please enter password']
   },
+  id_google: {
+    type: String,
+  },
+  products: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product'
+    }],
+    default: []
+  },
 })
 
 export default mongoose.models.User || mongoose.model('User', userSchema)

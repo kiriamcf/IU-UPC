@@ -2,6 +2,7 @@ import './globals.css'
 import "tailwindcss/tailwind.css";
 import { Montserrat } from "next/font/google";
 import Header from './components/header';
+import { UserProvider } from './context/UserContext';
 
 export const metadata = {
   title: 'Restaurant de l’Epsem',
@@ -14,8 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <Header />
-        {children}
+        <UserProvider>
+          <Header />
+          {children}
+        </UserProvider>
       </body>
     </html>
   )

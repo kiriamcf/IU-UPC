@@ -1,5 +1,6 @@
 import dbConnect from "../config/dbConnect"
 import User from "../models/user"
+import Product from "../models/product"
 import { ObjectId } from "mongodb"
 
 dbConnect()
@@ -9,16 +10,19 @@ export async function indexUser() {
   return users
 }
 
-export async function showUser(id) {
-  const user = await User.findOne(id)
+export async function showUser(id, provider) {
+  if (provider == 'google') {
+    var user = await User.findOne({id_google: id})
+  }
+  else {
+    var user = await User.findOne({ _id: new ObjectId(id) })
+  }
   return user
 }
 
-export async function createUser(req, res, next) {
-  const user = await User.create(await req.body)
-  res.status(200).json({
-    user
-  })
+export async function createUser(req) {
+  const user = await User.create(await req.json())
+  return user
 }
 
 export async function updateUser(req, res, next) {

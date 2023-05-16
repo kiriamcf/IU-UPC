@@ -15,10 +15,10 @@ export default function Home() {
         <form className="bg-white shadow-xl-full rounded p-8 mb-6 flex flex-col gap-4">
             <div>
               <div className="flex gap-2">
-                <label className="block w-1/3 text-gray-700 text-sm font-bold mb-2" for="nom">
+                <label className="block w-1/3 text-gray-700 text-sm font-bold mb-2" htmlFor="nom">
                     Nom
                 </label>
-                <label className="block w-2/3 text-gray-700 text-sm font-bold mb-2" for="cognoms">
+                <label className="block w-2/3 text-gray-700 text-sm font-bold mb-2" htmlFor="cognoms">
                     Cognoms
                 </label>
               </div>
@@ -32,7 +32,7 @@ export default function Home() {
               }
             </div>
             <div>
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+              <label class="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                   Email
               </label>
               <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${triedLogin ? "border-red-500" : ""}`} id="email" type="email" placeholder="exemple@email.com" />
@@ -42,7 +42,7 @@ export default function Home() {
               }
             </div>
             <div>
-              <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                   Contrasenya
               </label>
               <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${triedLogin ? "border-red-500" : ""}`} id="password" type="password" placeholder="******************" />
@@ -52,7 +52,7 @@ export default function Home() {
               }
             </div>
             <div>
-              <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                   Confirmació contrasenya
               </label>
               <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${triedLogin ? "border-red-500" : ""}`} id="password-confirm" type="password" placeholder="******************" />
