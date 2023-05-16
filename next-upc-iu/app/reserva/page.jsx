@@ -1,19 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import Footer from "../components/footer";
-import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Home() {
-    const [triedRegister, setTriedRegister] = useState(false);
+    const [triedReserva, setTriedReserva] = useState(false);
 
     const [valueName, setValueName] = useState("");
     const [valueSurname, setValueSurname] = useState("");
     const [valueEmail, setValueEmail] = useState("");
-    const [valuePassword, setValuePassword] = useState("");
-    const [valuePasswordConfirmation, setValuePasswordConfirmation] =
-        useState("");
+    const [valueTelephone, setValueTelephone] = useState("");
+    const [valuePeople, setValuePeople] = useState("");
 
     const handleChangeName = (event) => {
         const result = event.target.value;
@@ -33,28 +31,34 @@ export default function Home() {
         setValueEmail(result);
     };
 
-    const handleChangePassword = (event) => {
-        const result = event.target.value;
+    const handleChangeTelephone = (event) => {
+        const result = event.target.value.replace(/\D/g, "");
 
-        setValuePassword(result);
+        setValueTelephone(result);
     };
 
-    const handleChangePasswordConfirmation = (event) => {
-        const result = event.target.value;
+    const handleChangePeople = (event) => {
+        const result = event.target.value.replace(/\D/g, "");
 
-        setValuePasswordConfirmation(result);
+        if (result < 9 && result != 0) {
+            setValuePeople(result);
+        }
     };
 
-    const handleRegister = (event) => {
+    const handleRemovePeople = (event) => {
+        setValuePeople("");
+    };
+
+    const handleReserva = (event) => {
         axios
             .post(
-                "/register",
+                "/reserva",
                 {
                     name: valueName,
                     surname: valueSurname,
                     email: valueEmail,
-                    password: valuePassword,
-                    passwordConfirmation: valuePasswordConfirmation,
+                    phone: valueTelephone,
+                    people: valuePeople,
                 },
                 {
                     headers: {
@@ -92,7 +96,7 @@ export default function Home() {
                         <div className="flex gap-2">
                             <input
                                 className={`shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${
-                                    triedRegister ? "border-red-500" : ""
+                                    triedReserva ? "border-red-500" : ""
                                 }`}
                                 id="nom"
                                 type="text"
@@ -102,7 +106,7 @@ export default function Home() {
                             />
                             <input
                                 className={`relative shadow appearance-none border rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${
-                                    triedRegister ? "border-red-500" : ""
+                                    triedReserva ? "border-red-500" : ""
                                 }`}
                                 id="cognoms"
                                 type="text"
@@ -111,7 +115,7 @@ export default function Home() {
                                 onChange={handleChangeSurname}
                             />
                         </div>
-                        {triedRegister ? (
+                        {triedReserva ? (
                             <p className="text-red-500 text-xs italic mt-2">
                                 Introdueix el nom i cognoms.
                             </p>
@@ -128,7 +132,7 @@ export default function Home() {
                         </label>
                         <input
                             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${
-                                triedRegister ? "border-red-500" : ""
+                                triedReserva ? "border-red-500" : ""
                             }`}
                             id="email"
                             type="email"
@@ -136,7 +140,7 @@ export default function Home() {
                             value={valueEmail}
                             onChange={handleChangeEmail}
                         />
-                        {triedRegister ? (
+                        {triedReserva ? (
                             <p className="text-red-500 text-xs italic mt-2">
                                 Introdueix el correu.
                             </p>
@@ -147,23 +151,24 @@ export default function Home() {
                     <div>
                         <label
                             className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="password"
+                            htmlFor="telephone"
                         >
-                            Contrasenya
+                            Telèfon
                         </label>
                         <input
                             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${
-                                triedRegister ? "border-red-500" : ""
+                                triedReserva ? "border-red-500" : ""
                             }`}
-                            id="password"
-                            type="password"
-                            placeholder="******************"
-                            value={valuePassword}
-                            onChange={handleChangePassword}
+                            id="telephone"
+                            type="tel"
+                            placeholder="612 34 56 78"
+                            value={valueTelephone}
+                            onChange={handleChangeTelephone}
+                            pattern="(?:6[0-9]{2}|7[1-9][0-9])(?: ?[0-9]{3}){2}\r?$"
                         />
-                        {triedRegister ? (
+                        {triedReserva ? (
                             <p className="text-red-500 text-xs italic mt-2">
-                                Introdueix la contrasenya.
+                                Introdueix el telèfon.
                             </p>
                         ) : (
                             ""
@@ -172,54 +177,38 @@ export default function Home() {
                     <div>
                         <label
                             className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="password"
+                            htmlFor="people"
                         >
-                            Confirmació contrasenya
+                            Nº persones
                         </label>
                         <input
                             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-primary focus:outline-none focus:shadow-outline transition-colors ${
-                                triedRegister ? "border-red-500" : ""
+                                triedReserva ? "border-red-500" : ""
                             }`}
-                            id="password-confirm"
-                            type="password"
-                            placeholder="******************"
-                            value={valuePasswordConfirmation}
-                            onChange={handleChangePasswordConfirmation}
+                            id="people"
+                            type="text"
+                            placeholder="1-8"
+                            value={valuePeople}
+                            onChange={handleChangePeople}
+                            onKeyDown={handleRemovePeople}
                         />
-                        {triedRegister ? (
+                        {triedReserva ? (
                             <p className="text-red-500 text-xs italic mt-2">
-                                Introdueix la confirmació de contrasenya.
+                                Introdueix la quantitat de persones.
                             </p>
                         ) : (
                             ""
                         )}
                     </div>
+
                     <button
-                        onClick={setTriedRegister}
+                        onClick={setTriedReserva}
                         className="bg-primary-fill w-full hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
                     >
-                        Register
+                        Reservar
                     </button>
                 </form>
-                <section className="flex gap-4 w-full mb-6">
-                    <div className="rounded p-4 w-1/2 flex justify-center bg-white shadow-xl-full hover:bg-gray-100 transition-colors cursor-pointer">
-                        <a href="#">
-                            <FcGoogle size="40" />
-                        </a>
-                    </div>
-                    <div className="rounded p-4 w-1/2 flex justify-center bg-white shadow-xl-full hover:bg-gray-100 transition-colors cursor-pointer">
-                        <a href="#">
-                            <Image
-                                src="/upc.svg"
-                                alt="Upc Logo"
-                                width={40}
-                                height={40}
-                                className="h-[40px]"
-                            />
-                        </a>
-                    </div>
-                </section>
             </main>
 
             <Footer />

@@ -245,13 +245,13 @@ export default function CardPage() {
                             href="/carta"
                             className="uppercase text-sm hover:text-hover-gray transition"
                         >
-                            Dinar
+                            Begudes
                         </Link>
                         <Link
-                            href="/carta"
+                            href="/reserva"
                             className="uppercase text-sm hover:text-hover-gray transition"
                         >
-                            Begudes
+                            Reservar taula
                         </Link>
                     </div>
                     <div className="hidden md:block">
