@@ -12,7 +12,7 @@ export async function indexUser() {
 
 export async function showUser(id, provider) {
   if (provider == 'google') {
-    var user = await User.findOne({id_google: id})
+    var user = await User.findOne({id_google: id}).populate('products');
   }
   else {
     var user = await User.findOne({ _id: new ObjectId(id) })
