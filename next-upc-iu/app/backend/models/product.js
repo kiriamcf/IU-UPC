@@ -11,6 +11,9 @@ const productSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: [true, 'Please enter price']
+  },
+  imgURL: {
+    type: String,
   }
 })
 

@@ -5,20 +5,20 @@ import { useState } from 'react';
 
 const UserContext = React.createContext();
 
-export const UserProvider = ({ children }) => {
-  const [userProducts, setUserProducts] = useState([]);
+export const UserProvider = ({ children, cart}) => {
+  const [userCart, setUserCart] = useState(cart);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const addToCart = (product) => {
-    setUserProducts([...cartItems, product]);
+  /* const addToCart = (product) => {
+    setuserCart([...cartItems, product]);
 
-    const newTotalPrice = userProducts.map((product) => product.price).reduce((a, b) => a + b, 0);
+    const newTotalPrice = userCart.map((product) => product.price).reduce((a, b) => a + b, 0);
     setTotalPrice(newTotalPrice);
-  };
+  }; */
 
 
   return (
-    <UserContext.Provider value={{ userProducts, totalPrice, setUserProducts, addToCart }}>
+    <UserContext.Provider value={{ userCart, totalPrice, setUserCart, setTotalPrice }}>
       {children}
     </UserContext.Provider>
   );

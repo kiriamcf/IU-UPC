@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { CiMenuBurger } from 'react-icons/ci';
-import {FaShoppingCart} from 'react-icons/fa'
+import {BiUserCircle} from 'react-icons/bi';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import LoginDropdown from './logindropdown';
+import GenericDropdown from './genericdropdown';
+import CartIcon from './carticon'; 
 
 export default async function Header() {
   const session = await getServerSession(authOptions);
@@ -16,32 +17,38 @@ export default async function Header() {
           <Link href="/">
             <Image src="/logo.svg" alt="Webpage Logo" width={120} height={50} />
           </Link>
-          <Link href="/carta" className="hidden md:inline-block uppercase text-xl transition-colors hover:text-primary">
+          <GenericDropdown />
+          <Link href="/reserva" className="hidden md:inline-block uppercase text-lg transition-colors hover:text-primary">
+            Reservar taula
+          </Link>
+          <Link href="/carta" className="hidden md:inline-block uppercase text-lg transition-colors hover:text-primary">
             Carta
           </Link>
         </div>
         {session ? (
           <div className='flex gap-4 items-center'>
-            <Link href='/carret'>
-              <FaShoppingCart size={24} className='hover:text-primary' />
+            <Link href='/cart'>
+              <CartIcon />
             </Link>
             <LoginDropdown name={session.user.name} imageUrl={session.user.image} />
           </div>
         ) : (
-        <ul className="hidden md:flex items-center gap-4">
-          <li className="uppercase text-xl transition-colors hover:text-primary">
-            <Link href="/login">
-              Login
-            </Link>
-          </li>
-          <li className="uppercase text-xl transition-colors hover:text-primary">
-            <Link href="/register">
-              Register
-            </Link>
-          </li>
-        </ul>
+          <div>
+            <ul className="hidden md:flex items-center gap-4">
+              <li className="uppercase text-xl transition-colors hover:text-primary">
+                <Link href="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="uppercase text-xl transition-colors hover:text-primary">
+                <Link href="/register">
+                  Register
+                </Link>
+              </li>
+            </ul>
+            <BiUserCircle size={40} className='md:hidden cursor-pointer hover:text-primary' />
+          </div>
         )}
-        <CiMenuBurger size={30} className="md:hidden cursor-pointer hover:text-primary"/>
       </nav>
     </header>
   );

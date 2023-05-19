@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Button from "./button";
 import { RxDotFilled, RxDot, RxArrowRight, RxArrowLeft } from "react-icons/rx";
+import Link from "next/link";
 
 function Slider() {
   const slides = [
@@ -48,7 +49,9 @@ function Slider() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-10">
         <h1 className="uppercase font-bold text-white text-5xl sm:text-7xl">Benvingut</h1>
         <div className="w-[80%]">
-          <Button text="Reserva" white={true} />
+          <Link href='/reserva'>
+            <Button text="Reserva" white={true} />  
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-0 left-[50%] -translate-x-[50%] flex justify-between px-4 items-center bg-white w-[380px] h-12">

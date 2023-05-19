@@ -20,13 +20,18 @@ const userSchema = new mongoose.Schema({
   id_google: {
     type: String,
   },
-  products: {
+  cart: {
     type: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product'
+      product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product'
+      },
+      quantity: {
+        type: Number
+      }
     }],
     default: []
-  },
+  }
 })
 
 export default mongoose.models.User || mongoose.model('User', userSchema)

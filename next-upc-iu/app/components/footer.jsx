@@ -10,18 +10,13 @@ function Footer() {
         </p>
         <ul>
             <li>
-            <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
-                esmorzar
+            <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="/reserva">
+                reservar taula
             </Link>
             </li>
             <li>
-            <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
-                dinar
-            </Link>
-            </li>
-            <li>
-            <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
-                begudes
+            <Link className="uppercase text-custom-gray text-xs hover:text-gray-300" href="/carta">
+                carta
             </Link>
             </li>
         </ul>

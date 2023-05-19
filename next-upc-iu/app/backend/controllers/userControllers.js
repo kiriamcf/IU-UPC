@@ -12,12 +12,30 @@ export async function indexUser() {
 
 export async function showUser(id, provider) {
   if (provider == 'google') {
-    var user = await User.findOne({id_google: id}).populate('products');
+    var user = await User.findOne({id_google: id}).populate('cart.product')
   }
   else {
     var user = await User.findOne({ _id: new ObjectId(id) })
   }
   return user
+}
+
+export async function addCartUser(req) {
+  const {userId, productId} = await req.json()
+  const user = await User.findOne({id_google: userId})
+  const existingProduct = user.cart.find(item => new ObjectId(productId).equals(item.product))
+  if (existingProduct) {
+    existingProduct.quantity += 1
+  } else {
+    const newProduct = {
+      product: new ObjectId(productId),
+      quantity: 1
+    }
+    user.cart.push(newProduct)
+  }
+  await user.save()
+
+  return user.populate('cart.product')
 }
 
 export async function createUser(req) {
