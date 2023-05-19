@@ -26,4 +26,6 @@ async function handler(NextRequest) {
   return await ((handlers[NextRequest.method.toUpperCase()] || notAllowed))(NextRequest);
 }
 
+// export const dynamic = 'force-dynamic'
+
 export { handler as GET, handler as POST }
