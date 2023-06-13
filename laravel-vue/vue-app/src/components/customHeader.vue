@@ -2,21 +2,21 @@
     <header class="w-full h-[67px] py-4 px-8 flex items-center justify-between">
       <nav class="w-full flex items-center justify-between">
         <div class="flex gap-4 items-center">
-            <a href="#">
+            <router-link to="/">
                 <img :src="logo" alt="Webpage Logo" class="w-[120px]" />
-            </a>
+            </router-link>
             <genericDropdown />
             <a href="#" class="hidden md:inline-block uppercase underline text-lg transition-colors hover:text-primary">
                 Reservar taula
             </a>
-            <a href="#" class="hidden md:inline-block uppercase underline text-lg transition-colors hover:text-primary">
+            <router-link to="/carta" class="hidden md:inline-block uppercase underline text-lg transition-colors hover:text-primary">
                 Carta
-            </a>
+            </router-link>
         </div>
         <div v-if="session" class='flex gap-4 items-center'>
-            <a href="#">
+            <router-link to="/carret">
                 <cartIcon />
-            </a>
+            </router-link>
             <loginDropdown name="nom" imgUrl="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" />
         </div>
         <div v-else>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+    import {RouterLink} from "vue-router";
     import imgLogo from "@/assets/logo.svg";
     import genericDropdown from "@/components/genericDropdown.vue";
     import cartIcon from "@/components/cartIcon.vue";
@@ -54,7 +55,7 @@
         },
         data() {
             return {
-                session: false,
+                session: true,
                 logo: imgLogo,
             };
         },

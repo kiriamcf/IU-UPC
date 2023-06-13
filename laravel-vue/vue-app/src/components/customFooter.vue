@@ -11,9 +11,9 @@
                     </a>
                 </li>
                 <li>
-                    <a class="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
+                    <router-link to="/carta" class="uppercase text-custom-gray text-xs hover:text-gray-300" href="#">
                         Carta
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </div>

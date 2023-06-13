@@ -7,9 +7,9 @@
             <a href="#" class="w-full uppercase text-lg transition-colors hover:text-primary whitespace-nowrap">
                 Reservar taula
             </a>
-            <a href="#" class="uppercase text-lg transition-colors hover:text-primary whitespace-nowrap">
+            <router-link to="/carta" class="uppercase text-lg transition-colors hover:text-primary whitespace-nowrap">
                 Carta
-            </a>
+            </router-link>
         </div>
     </div>
 </template>
