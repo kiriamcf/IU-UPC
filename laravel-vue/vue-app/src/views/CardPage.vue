@@ -128,7 +128,7 @@
       <div class="flex-1">
         <ul class="grid gap-4 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <li v-for="(product, index) in products" :key="index">
-            <Card :id="product.id" :image="product.image" :name="product.name_ca" :price="product.price" :description="product.description_ca"/>
+            <Card :id="product.id" :image="getImage(product.image_path)" :name="product.name_ca" :price="product.price" :description="product.description_ca"/>
           </li>
         </ul>
       </div>
@@ -165,6 +165,16 @@ export default {
     return {
       products: []
     };
+  },
+  methods: {
+    getImage(imagePath) {
+      if (!imagePath.includes(":8000")) {
+        const first = imagePath.substring(0, 16);
+        const second = imagePath.substring(16, imagePath.length);
+        return (first + ":8000" + second);
+      }
+      return imagePath;
+    },
   },
   created() {
     axios.get("http://localhost:8000/api/products")

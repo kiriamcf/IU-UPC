@@ -17,14 +17,14 @@
             <router-link to="/carret">
                 <cartIcon />
             </router-link>
-            <loginDropdown name="nom" imgUrl="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" />
+            <loginDropdown :name="userData.name" imgUrl="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" />
         </div>
         <div v-else>
             <ul class="hidden md:flex items-center gap-4">
                 <li class="uppercase underline text-xl transition-colors hover:text-primary">
-                    <a href="#">
+                    <router-link to="/login">
                         Login
-                    </a>
+                    </router-link>
                 </li>
                 <li class="uppercase underline text-xl transition-colors hover:text-primary">
                     <a href="#">
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    import {RouterLink} from "vue-router";
+    import axios from "axios";
     import imgLogo from "@/assets/logo.svg";
     import genericDropdown from "@/components/genericDropdown.vue";
     import cartIcon from "@/components/cartIcon.vue";
@@ -57,7 +57,17 @@
             return {
                 session: true,
                 logo: imgLogo,
+                userData: {},
             };
+        },
+        created() {
+            axios.get("http://localhost:8000/api/user")
+            .then(response => {
+                this.userData = response.data.data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
         },
     };
 </script>

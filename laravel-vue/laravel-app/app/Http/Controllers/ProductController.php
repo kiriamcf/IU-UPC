@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->only(['add_product_cart', 'remove_product_cart']);
+        /* $this->middleware('auth:sanctum')->only(['add_product_cart', 'remove_product_cart']); */
     }
 
     /**
@@ -42,7 +42,8 @@ class ProductController extends Controller
      */
     public function add_product_cart(Product $product)
     {
-        $user = Auth::user();
+        /* $user = Auth::user(); */
+        $user = User::where('id', 1)->first();
 
         // If product is not in user cart
         if ($user->products()->wherePivot('product_id', $product->id)->first() == null) {
@@ -63,7 +64,8 @@ class ProductController extends Controller
      */
     public function remove_product_cart(Product $product)
     {
-        $user = Auth::user();
+        /* $user = Auth::user(); */
+        $user = User::where('id', 1)->first();
 
         // If product has one quantity
         if ($user->products()->wherePivot('product_id', $product->id)->first()->pivot->product_quantity == 1) {
@@ -77,5 +79,22 @@ class ProductController extends Controller
             'product_quantity' => $existingProduct->pivot->product_quantity - 1,
         ]);
         return response()->noContent(200);
+    }
+
+    /**
+     * Get user cart info
+     */
+    public function get_cart_user()
+    {
+        /* $user = Auth::user(); */
+        $user = User::where('id', 1)->first();
+        /* $existingProduct = $user->products()->wherePivot('product_id', $product->id)->first(); */
+        $products = $user->products()->get();
+        $cart = $products->map(function ($item, $key) use ($user) {
+            $pivot = $user->products()->wherePivot('product_id', $item->id)->first()->pivot->product_quantity;
+            $item->product_quantity = $pivot;
+            return $item;
+        });
+        return CartResource::collection($cart);
     }
 }

@@ -15,22 +15,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <!-- Iterar sobre els productes que te al carret -->
-                    <tr class='border-b font-medium'>
+                    <tr v-for="(product, index) in userCart" :key="index" class='border-b font-medium'>
                         <td class="py-2 w-24">
-                            <img src="#" alt="nom producte.."/>
+                            <img :src="product.image_path" alt="Imatge producte"/>
                         </td>
                         <td class="py-2">
-                            test
+                            {{product.name}}
                         </td>
                         <td class="py-2">
-                            3€
+                            {{product.price}}€
                         </td>
                         <td class="py-2">
-                            2
+                            {{product.product_quantity}}
                         </td>
                         <td class="py-2">
-                            6€
+                            {{(product.price * product.product_quantity).toFixed(2)}}€
                         </td>
                     </tr>
                 </tbody>
@@ -40,7 +39,7 @@
             <div class="flex flex-col gap-2 w-64">
                 <div class="flex justify-between items-center">
                     <p class="font-semibold">Total:</p>
-                    <p class="text-xl">6$</p>
+                    <p class="text-xl">{{userCart.reduce((acc, curr) => acc + (curr.price * curr.product_quantity), 0)}}$</p>
                 </div>
                 <customButton :asWhite="false" text="Pagar" />
             </div>
@@ -49,11 +48,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import customButton from "@/components/customButton.vue";
 
 export default {
     components: {
         customButton,
+    },
+    computed: {
+        ...mapState(['userCart']),
     },
 };
 </script>

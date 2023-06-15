@@ -17,14 +17,18 @@ use App\Http\Controllers\UserController;
 */
 
 Route::name('api.')->group(function () {
-    Route::apiResource('products', ProductController::class);
-    // Route::apiResource('users', UserController::class);
-    Route::get('/user', [UserController::class, 'show'])->name('showUser');
-    Route::get('/register', [UserController::class, 'register'])->name('register');
-    Route::get('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-    Route::post('/addProduct/{product}', [ProductController::class, 'add_product_cart'])->name('addProduct');
-    Route::delete('/removeProduct/{product}', [ProductController::class, 'remove_product_cart'])->name('removeProduct');
+    Route::group(['middleware' => ['web']], function () {
+        // your routes here
+        Route::apiResource('products', ProductController::class);
+        // Route::apiResource('users', UserController::class);
+        Route::get('/user', [UserController::class, 'show'])->name('showUser');
+        Route::get('/register', [UserController::class, 'register'])->name('register');
+        Route::post('/login', [UserController::class, 'login'])->name('login');
+        Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+        Route::post('/addProduct/{product}', [ProductController::class, 'add_product_cart'])->name('addProduct');
+        Route::delete('/removeProduct/{product}', [ProductController::class, 'remove_product_cart'])->name('removeProduct');
+        Route::get('/userCart', [ProductController::class, 'get_cart_user'])->name('userCart');
+    });
 });
 // Route::get('/test', [ProductController::class, 'index']);
 

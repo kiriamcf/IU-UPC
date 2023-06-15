@@ -47,7 +47,7 @@ class Product extends Model
         'description_en' => "string",
         'description_es' => "string",
         'description_ca' => "string",
-        'price' => "integer",
+        'price' => "float",
         'image_path' => "string",
         'breakfast' => "boolean",
         'drink' => "boolean",

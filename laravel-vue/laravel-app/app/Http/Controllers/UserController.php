@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->only(['logout', 'show']);
+        /* $this->middleware('auth:sanctum')->only(['logout', 'show']); */
     }
 
     /**
@@ -22,14 +22,12 @@ class UserController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->validated();
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            
             return new UserResource($request->user());
         }
 
-        abort('Invalid credentials');
     }
 
     /**
@@ -76,6 +74,7 @@ class UserController extends Controller
      */
     public function show(Request $request)
     {
-        return new UserResource($request->user());
+        /* return new UserResource($request->user()); */
+        return new UserResource(User::where('id', 1)->first());
     }
 }

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import {provide} from "vue";
 import customHeader from "@/components/customHeader.vue";
 import customFooter from "@/components/customFooter.vue";
 
@@ -16,9 +15,8 @@ export default {
         customHeader,
         customFooter,
     },
-    setup() {
-        const example_context = 7;
-        provide('example_context', example_context);
+    created() {
+        this.$store.dispatch('fetchUserCart');
     },
 };
 </script>

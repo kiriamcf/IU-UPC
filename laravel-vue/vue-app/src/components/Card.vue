@@ -26,12 +26,13 @@
             <p class="mb-4">
                 {{description}}
             </p>
-            <customButton :asWhite="false" text="Afegir" />
+            <customButton @click="addProduct" :asWhite="false" text="Afegir" />
         </div>
     </article>
 </template>
 
 <script>
+import axios from "axios";
 import infoCircle from "@/components/icons/infoCircle.vue";
 import customButton from "@/components/customButton.vue";
 
@@ -52,6 +53,17 @@ export default {
         return {
             isFlipped: false,
         };
+    },
+    methods: {
+        addProduct() {
+            axios.post(`http://localhost:8000/api/addProduct/${this.id}`)
+                .then(response => {
+                    this.$store.dispatch('fetchUserCart');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
     },
 };
 </script>
